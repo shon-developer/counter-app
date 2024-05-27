@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
 function App() {
+  const [token, setToken] = useState(0);
+  const increment = () => {
+    token < 10 ? setToken(token + 1) : setToken(token);
+  };
+
+  const decrement = () => {
+    token > 0 ? setToken(token - 1) : setToken(token);
+  };
+
+  const reset = () => {
+    setToken(0);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-black text-white w-full min-h-screen flex flex-col items-center justify-start px-6 py-2 text-4xl pt-24">
+      <h1 className="text-7xl text-cyan-500">{token}</h1>
+      <div className="flex items-center gap-6">
+        <button onClick={increment} className="text-5xl">
+          +
+        </button>
+        <button onClick={reset} className="text-2xl">
+          Reset
+        </button>
+        <button onClick={decrement} className="text-5xl">
+          -
+        </button>
+      </div>
     </div>
   );
 }
